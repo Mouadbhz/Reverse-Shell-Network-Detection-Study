@@ -1,0 +1,2 @@
+source="*reverse_shell*.log"
+| timechart count

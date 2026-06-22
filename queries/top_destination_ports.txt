@@ -1,0 +1,4 @@
+source="*reverse_shell*.log"
+| rex ">\s(?<dest_ip>\d+\.\d+\.\d+\.\d+)\.(?<dest_port>\d+)"
+| stats count by dest_port
+| sort -count

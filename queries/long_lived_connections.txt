@@ -1,0 +1,5 @@
+source="*reverse_shell*.log"
+| rex "IP (?<src_ip>\d+\.\d+\.\d+\.\d+)\.\d+ > (?<dest_ip>\d+\.\d+\.\d+\.\d+)\.(?<dest_port>\d+)"
+| stats min(_time) as start max(_time) as end by src_ip dest_ip dest_port
+| eval duration = end - start
+| where duration > 30
